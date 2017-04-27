@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+    <!-- 引入 echarts.js -->
+    <script src="js/echarts.js"></script>
+    <script src="js/jquery.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1400px; height: 700px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+        <!--设置背景颜色-->
+        backgroundColor: '#2c343c',//注意用逗号结尾
+
+            legend:{
+                orient:'vertical',
+                left:'left',
+                textStyle:{
+                    color:'#F0F0F0',
+                },
+                data:['男','女','未知'
+                ]
+            },
+           series : [
+        {
+            name: '访问来源',
+            type: 'pie',      //设置输出的图像类型
+            radius: '70%',    //设置输出半径
+            roseType: 'angle',//将输出形式设置为南丁格尔图,没有这句将输出饼状图
+            color:['#c23531','#746D76', '#61a0a8', '#d48265', '#91c7ae','#749f83',  '#ca8622', '#bda29a','#6e7074', '#546570', '#c4ccd3'],
+            //数据
+            data:[
+                {value:164, name:'男'},
+                {value:69, name:'女'},
+                {value:40, name:'未知'},
+
+            ],
+            //设置标签属性
+            label: {
+                normal: {
+                    textStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            //设置标签线的样式
+            labelLine: {
+                normal: {
+                    lineStyle: {
+                        color: 'rgba(255, 255, 255, 0.3)'
+                    }
+                }
+            },
+            //设置阴影
+            itemStyle: {
+                normal: {
+                    shadowBlur: 200,
+                    shadowColor: 'rgba(0, 0, 0, 0.5)'
+                }
+            }
+        }
+    ]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
